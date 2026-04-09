@@ -1,0 +1,20 @@
+.skeleton-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.skeleton-line {
+  background: linear-gradient(90deg, var(--surface2) 25%, var(--surface3) 50%, var(--surface2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease infinite;
+  border-radius: var(--radius-sm);
+  height: 14px;
+  margin-bottom: 10px;
+}
+
+.skeleton-title { width: 55%; height: 18px; margin-bottom: 12px; }
+.skeleton-meta { width: 38%; height: 12px; }
+.skeleton-body { width: 82%; margin-bottom: 0; }

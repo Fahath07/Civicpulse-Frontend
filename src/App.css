@@ -1,38 +1,17 @@
-.App {
-  text-align: center;
-}
+.app { min-height: 100vh; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ── TOAST OVERRIDES ── */
+.Toastify__toast {
+  border-radius: 14px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 13.5px !important;
+  padding: 14px 16px !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.Toastify__toast--success { background: #fff !important; color: #1A5828 !important; border-color: rgba(26,88,40,0.15) !important; }
+.Toastify__toast--error { background: #fff !important; color: #8A1818 !important; border-color: rgba(138,24,24,0.15) !important; }
+.Toastify__toast--info { background: #fff !important; color: #1A3A5C !important; border-color: rgba(26,58,92,0.15) !important; }
+.Toastify__toast--warning { background: #fff !important; color: #8A5800 !important; border-color: rgba(138,88,0,0.15) !important; }
+.Toastify__progress-bar { height: 3px !important; border-radius: 0 0 14px 14px !important; }
+.Toastify__close-button { color: #8A8480 !important; opacity: 0.7 !important; }
