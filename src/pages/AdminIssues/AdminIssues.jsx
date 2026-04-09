@@ -2,13 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import api from '../../services/api';
-import StatusBadge from '../../components/StatusBadge/StatusBadge';
 import { toast } from 'react-toastify';
 import './AdminIssues.css';
-
-const STATUSES = ['Open', 'Assigned', 'In Progress', 'Resolved', 'Closed'];
-const CATEGORIES = ['Roads', 'Water', 'Electricity', 'Sanitation', 'Parks', 'Drainage', 'Construction', 'Other'];
-const PRIORITIES = ['Low', 'Medium', 'High', 'Critical'];
 
 export default function AdminIssues() {
   const navigate = useNavigate();
@@ -18,7 +13,7 @@ export default function AdminIssues() {
   const [pages, setPages] = useState(1);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [showFilters, setShowFilters] = useState(false);
+
   const [filters, setFilters] = useState({
     status: '',
     category: '',
@@ -28,17 +23,18 @@ export default function AdminIssues() {
     to: '',
     assigned: ''
   });
+
   const [selected, setSelected] = useState([]);
   const [workers, setWorkers] = useState([]);
   const [bulkWorker, setBulkWorker] = useState('');
 
-  // Load workers (runs once)
+  // Load workers
   useEffect(() => {
     api.get('/admin/fieldworkers')
       .then(r => setWorkers(r.data.workers || []));
   }, []);
 
-  // Fetch issues function
+  // Fetch issues
   const fetchIssues = useCallback(async () => {
     setLoading(true);
     try {
@@ -62,10 +58,10 @@ export default function AdminIssues() {
     }
   }, [page, filters]);
 
-  // ✅ FIXED useEffect (NO ESLINT ERROR)
+  // ✅ Fixed useEffect
   useEffect(() => {
     fetchIssues();
-  }, [page, filters]); // 🔥 key fix
+  }, [page, filters]);
 
   const handleBulkAction = async (action) => {
     if (!selected.length) return;
@@ -145,10 +141,17 @@ export default function AdminIssues() {
 
           {loading ? (
             <p>Loading...</p>
+          ) : issues.length === 0 ? (
+            <p>No issues found</p>
           ) : (
             issues.map(issue => (
-              <div key={issue.id}>
-                {issue.title} - {issue.status}
+              <div
+                key={issue.id}
+                onClick={() => navigate(`/issues/${issue.id}`)}
+                style={{ cursor: 'pointer', padding: '10px', borderBottom: '1px solid #eee' }}
+              >
+                <strong>{issue.title}</strong> <br />
+                Status: {issue.status}
               </div>
             ))
           )}
