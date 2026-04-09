@@ -144,7 +144,7 @@ export default function IssueDetail() {
                   <p className="verify-photos-label">Resolution photos submitted by worker:</p>
                   <div className="verify-photos-grid">
                     {issue.resolutionPhotos.map((p, i) => (
-                      <img key={i} src={p.startsWith('/uploads') ? `http://localhost:5000${p}` : p} alt="" className="verify-photo" />
+                      <img key={i} src={p.startsWith('/uploads') ? `http://limport.meta.env.VITE_API_URL${p}` : p} alt="" className="verify-photo" />
                     ))}
                   </div>
                 </div>
@@ -217,7 +217,7 @@ export default function IssueDetail() {
                   <p className="section-title">Complaint Photos</p>
                   <div className="photos-grid">
                     {issue.photos.map((p, i) => (
-                      <img key={i} src={p.startsWith('/uploads') ? `http://localhost:5000${p}` : p} alt="" className="issue-photo" />
+                      <img key={i} src={p.startsWith('/uploads') ? `${import.meta.env.VITE_API_URL}${p}` : p} alt="" className="issue-photo" />
                     ))}
                   </div>
                 </div>
@@ -227,7 +227,7 @@ export default function IssueDetail() {
                   <p className="section-title">Resolution Photos</p>
                   <div className="photos-grid">
                     {issue.resolutionPhotos.map((p, i) => (
-                      <img key={i} src={p.startsWith('/uploads') ? `http://localhost:5000${p}` : p} alt="" className="issue-photo" />
+                      <img key={i} src={p.startsWith('/uploads') ? `${import.meta.env.VITE_API_URL}${p}` : p} alt="" className="issue-photo" />
                     ))}
                   </div>
                 </div>
